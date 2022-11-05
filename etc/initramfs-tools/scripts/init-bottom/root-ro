@@ -254,8 +254,6 @@ fi
 # ${ROOT_RO} entry.
 # Remember we are still on the initramfs root fs here, so we have to work on
 # ${rootmnt}/etc/fstab. The original fstab is ${rootmnt}${ROOT_RO}/etc/fstab.
-ROOT_TYPE=$(cat /proc/mounts | ${rootmnt}/bin/grep ${ROOT} | ${rootmnt}/usr/bin/cut -d' ' -f3)
-ROOT_OPTIONS=$(cat /proc/mounts | ${rootmnt}/bin/grep ${ROOT} | ${rootmnt}/usr/bin/cut -d' ' -f4)
 cat <<EOF >${rootmnt}/etc/fstab
 #
 #  This fstab is in RAM, the real one can be found at ${ROOT_RO}/etc/fstab
@@ -267,7 +265,7 @@ cat <<EOF >${rootmnt}/etc/fstab
 #    sudo mount -o remount,ro ${ROOT_RO}
 #
 
-${ROOT} ${ROOT_RO} ${ROOT_TYPE} ${ROOT_OPTIONS} 0 0
+${ROOT} ${ROOT_RO} ${ROOTFSTYPE} defaults 0 0
 
 #
 #  remaining entries from the original ${ROOT_RO}/etc/fstab follow.
