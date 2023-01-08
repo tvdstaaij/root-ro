@@ -34,13 +34,6 @@ else
     echo dphys-swapfile is not installed, assuming we dont need to disable swap
 fi
 
-echo Setting up maintenance scripts in /root...
-cp reboot-to-readonly-mode.sh /root/reboot-to-readonly-mode.sh
-chmod +x /root/reboot-to-readonly-mode.sh
-
-cp reboot-to-writable-mode.sh /root/reboot-to-writable-mode.sh
-chmod +x /root/reboot-to-writable-mode.sh
-
 echo Setting up initramfs-tools scripts...
 cp etc/initramfs-tools/scripts/init-bottom/root-ro /etc/initramfs-tools/scripts/init-bottom/root-ro
 chmod +x /etc/initramfs-tools/scripts/init-bottom/root-ro
